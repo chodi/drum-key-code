@@ -1,0 +1,28 @@
+.playing {
+  transform: scale(1.1);
+  border-color: deepskyblue;
+  box-shadow: 0 0 10px red;
+}
+
+.key {
+  padding: 10px;
+  transition: all 0.07s;
+  border-color: blue;
+  border-width: 1px;
+  border-style: solid;
+  margin-left: 5px;
+  margin-right: : 5px;
+}
+
+.keys {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  align-self: center;
+}
+body {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  height: 100vh;
+}

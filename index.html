@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="css/style.css"></link>
+</head>
+<body>
+  <div class="keys">
+    <div data-key="65" class="key">
+      <span>A</span>
+      <span>SNARE</span>
+    </div>
+    <div data-key="83" class="key">
+      <span>S</span>
+      <span>SNARE</span>
+    </div>
+    <div data-key="68" class="key">
+      <span>D</span>
+      <span>Clap-Close</span>
+    </div>
+    <div data-key="75" class="key">
+      <span>K</span>
+      <span>KICK</span>
+    </div>
+    <div data-key="76" class="key">
+      <span>L</span>
+      <span>KICK</span>
+    </div>
+  </div>
+  <audio data-key="65" src="mp3/snare.wav"></audio>
+  <audio data-key="83" src="mp3/snare.wav"></audio>
+  <audio data-key="68" src="mp3/closehiat.wav"></audio>
+  <audio data-key="75" src="mp3/kick.wav"></audio>
+  <audio data-key="76" src="mp3/kick.wav"></audio>
+
+  <script type="text/javascript">
+    function removePlayClass (e) {
+      if (e.propertyName !== 'transform') return;
+      this.classList.remove('playing');
+    }
+    const keys = document.querySelectorAll('.key');
+    keys.forEach((key) => {
+      key.addEventListener('transitionend', removePlayClass);
+    });
+    window.addEventListener('keydown', (e) => {
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+      if (!audio || !key) return;
+      audio.currentTime = 0;
+      audio.play();
+      key.classList.add('playing');
+    })
+  </script>
+</body>
+</html>
